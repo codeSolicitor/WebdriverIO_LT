@@ -50,7 +50,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/single_test.js'
+        'test/features/testing.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -82,11 +82,20 @@ exports.config = {
         project: "First Webdriverio Android Project",
         build: 'Webdriverio Android',
         "platform" : "Android",
-            "deviceName" : "Google Pixel 6",
+            "deviceName" : "Pixel 6",
             "isRealMobile" : true,
             "platformVersion" : "12",
-        app: 'android_appurl'
+        app: 'wiki'
       }],
+
+      product:"appAutomation",
+
+    cucumberOpts: {
+        timeout: 5000,
+        // require: [path.join(__dirname, 'test/step-definitions/steps.js')]   //,
+        require: ['test/step-definitions/steps.js'],
+        tagExpression: '@Test'
+    },
     //
     // ===================
     // Test Configurations
@@ -142,7 +151,7 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: 'mocha',
+    framework: 'cucumber',
     //
     // The number of times to retry the entire specfile when it fails as a whole
     // specFileRetries: 1,
